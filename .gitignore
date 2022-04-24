@@ -35,4 +35,4 @@ yarn-error.log*
 *.tsbuildinfo
 
 # data
-/backend/data/*.db
+# /backend/data/*.db
