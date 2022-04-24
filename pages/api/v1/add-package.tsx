@@ -8,7 +8,7 @@ export default function addPackage(
 ) {
   const { name, repo, user } = req.query;
 
-  data.set(name, { repo, user });
+  data.set(name, { repo, user, versions: [], files: {} });
   data.commit();
 
   res.status(200).json({ url: `/pkg/${name}`, status: "success" });

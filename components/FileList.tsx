@@ -6,7 +6,7 @@ export function FileList(props: any) {
 
   return (
     <div id={styles.files}>
-      {tag
+      {tag && files
         ? files[tag]
           ? files[tag].map((file: any, key: any) => (
               <div key={key} className={styles.file}>

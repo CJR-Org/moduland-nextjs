@@ -148,9 +148,7 @@ export class DB {
     };
 
     this.read = function () {
-      if (!existsSync(this.path)) {
-        this.format();
-      }
+      if (!existsSync(this.path)) this.format();
 
       this.data = gunzipSync(readFileSync(this.path, { flag: "r" })).toString();
       return this;

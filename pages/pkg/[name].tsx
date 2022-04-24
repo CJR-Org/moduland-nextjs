@@ -4,12 +4,21 @@ import styles from "../../styles/Style.module.css";
 import { DB } from "../../backend/VersatileDB";
 import { FileList } from "../../components/FileList";
 import Link from "next/link";
+import { cacheFiles, cacheVersions } from "../../utils/caching";
 
 export async function getServerSideProps(context: any) {
   const data = new DB("backend/data/packages.db").read();
 
+  const pkg = data.get(context.params.name);
+
+  cacheVersions(context.params.name, pkg.user, pkg.repo, data);
+
+  if (pkg.versions[0]) {
+    cacheFiles(context.params.name, pkg.user, pkg.repo, pkg.versions[0], data);
+  }
+
   return {
-    props: { package: data.get(context.params.name) },
+    props: { package: pkg },
   };
 }
 
