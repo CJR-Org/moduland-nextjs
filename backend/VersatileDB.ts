@@ -1,5 +1,5 @@
 import { gunzipSync, gzipSync } from "zlib";
-import { readFileSync, writeFileSync } from "fs";
+import { readFileSync, writeFileSync, existsSync } from "fs";
 
 export class DB {
   schema: any;
@@ -147,6 +147,8 @@ export class DB {
     };
 
     this.read = function () {
+      if (!existsSync(this.path)) this.format();
+
       this.data = gunzipSync(readFileSync(this.path, { flag: "r" })).toString();
       return this;
     };
