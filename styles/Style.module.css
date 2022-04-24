@@ -1,0 +1,25 @@
+.main {
+  text-align: center;
+}
+
+.noDecoration {
+  color: white;
+  text-decoration: none;
+}
+
+.file {
+  text-align: left;
+  border: none;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  padding: 5px;
+}
+
+#files {
+  width: 50%;
+  border-radius: 5px;
+  background: #363636;
+  border: solid 1px white;
+  padding: 5px;
+  transform: translateX(48%);
+}
