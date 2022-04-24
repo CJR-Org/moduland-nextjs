@@ -14,7 +14,13 @@ export async function getServerSideProps(context: any) {
   cacheVersions(context.params.name, pkg.user, pkg.repo, data);
 
   if (pkg.versions[0]) {
-    cacheFiles(context.params.name, pkg.user, pkg.repo, pkg.versions[0], data);
+    cacheFiles(
+      context.params.name,
+      pkg.user,
+      pkg.repo,
+      context.query.v ? context.query.v : pkg.versions[0],
+      data
+    );
   }
 
   return {
