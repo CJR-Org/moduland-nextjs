@@ -29,7 +29,7 @@ export class DB {
   append_ignorant: (key: string, value: any) => void;
 
   constructor(path: string, options: any = {}) {
-    this.path = join(process.cwd(), path);
+    this.path = path;
     this.queue = [];
     this.data = "";
 
@@ -149,7 +149,6 @@ export class DB {
 
     this.read = function () {
       if (!existsSync(this.path)) {
-        console.log("File doesn't exist, creating new file.");
         this.format();
       }
 
