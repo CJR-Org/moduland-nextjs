@@ -1,5 +1,6 @@
 import { gunzipSync, gzipSync } from "zlib";
 import { readFileSync, writeFileSync, existsSync } from "fs";
+import { join } from "path";
 
 export class DB {
   schema: any;
@@ -149,6 +150,7 @@ export class DB {
     this.read = function () {
       console.log(this.path);
       console.log(__dirname);
+      console.log(join(process.cwd(), this.path));
 
       if (!existsSync(this.path)) {
         console.log("File doesn't exist, creating new file.");
