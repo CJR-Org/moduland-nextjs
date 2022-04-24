@@ -147,6 +147,9 @@ export class DB {
     };
 
     this.read = function () {
+      console.log(this.path);
+      console.log(__dirname);
+
       if (!existsSync(this.path)) {
         console.log("File doesn't exist, creating new file.");
         this.format();
